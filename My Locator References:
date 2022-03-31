@@ -1,0 +1,84 @@
+Locator References:
+Reference: https://www.w3.org/TR/selectors-3/#universal-selector
+1.xpath:
+
+	text()——> . Can replace text() with dot(.) as it dot is generic and will not search for only text type.
+
+    1.1”:”
+
+    1.2"//td/a[contains(text(),'"+s+"')]/parent::td/preceding-sibling::td/input"
+
+    1.3 "//select[@id='searchfield1']"   // @- for xpath not for css
+
+    1.4 Some complecated : "//div[@id='importedData']//ul[1]/li[2]/div[1]"
+
+    1.5 //td[text()='Time Format']
+    
+    1.6 //a[text()='Time-format-check']/../..//a[text()=' Del']           // .. is for parent
+
+    1.7 $x("//input[contains(@id,'checkBoxAjax')]")  // Id partial match
+    
+    1.8 "//a[text()='Task-1' and @id='relatedList_408291000000125042']"
+
+    1.9 "//a[text()='Task-1' and @data-cid='detailView']/../following-sibling::td[position()=8]"
+    
+    1.10 $x("//ul[@id='columnListId']/li//label[contains(.,'Currency') and not(contains(.,'CFCurrency'))]//span")
+
+2.For mouse hover related
+    Actions(driver).moveToElement(driver.findElement(by)).perform();
+3. Css: input[name='Button'][value='Add']
+    By.cssSelector("[value='Cancel']" // Creteria cancel button
+    
+   Use in case of freeze layer:
+    By.cssSelector("#duplicateEventMsg #confirmButton0"); // # - for ID in css
+
+
+   In console: $("input[type='checkbox'][id*='Ajax']");
+
+4. Ancestor div :
+    $x("//*[contains(text(),'Closed Activities')]/ancestor::div[@id='RelatedListCommonDiv']//a[text()='asd']")
+
+5. Css : (Starts with/Ends with)
+    Starts with -> $("[data-zcqa^='Quotes_link']")
+    Ends with   -> $("[data-zcqa$='_link']")    
+     
+6. Css : (Contains)
+    Contains -> $("a:contains('Temp1')")
+    Contains -> $("[data-cid='detailView']a:contains('Temp1'ins)")
+
+6.1 Css : (NotContains)
+    Locator IPsList=new Locator(By.cssSelector("[id='ipAllowedList'] tr:not([class*='hide']) td:nth-child(2) li"), "IPs List");    
+7. Css : (Nth) // Can't able to use driver.click
+    Nth Element in same Level
+        -> $("[data-cid='detailView'][data-params*='Quotes']a:contains('Temp1'):eq(0)") , :eq(1)   - Order From First
+        -> $("[data-cid='detailView'][data-params*='Quotes']a:contains('Temp1'):eq(-1)") , :eq(-2) - Order From Last
+8. xpath - OR attribute
+    "//*[@data-zcqa='comm_socialaccounts' or @data-zcqa='comm_twitter']"
+
+No of elements listed : 
+int noOfCheckBoxes=driver.findElements(By.cssSelector("input[type='checkbox'][id*='Ajax'][checked]")).size();
+
+Press Enter key : driver.findElement(By.id("newsearchoption")).sendKeys(Keys.ENTER);
+
+
+Any one of following child in CSS:         Xpath
+        $("div[id='timeNoOpt']  a")   = "div[@id='timeNoOpt']//a"
+                (Need to give space)
+
+To select the visible elemet form set of elements
+        "[data-zcqa='Lead Name'] [id='sorted_column']:visible"
+
+$x("//td[contains(@onmouseenter,'Invok Url rname mod dfld')]/../td//img[contains(@onclick,'delete')]")
+
+
+Add row in creteria:
+"//select/parent::div/parent::td/following::td[4]/img[@id='addRow1']"
+
+Inspect elements inside iframe in Browser console
+$("FRAME_LOCATOR").contents().find("ELEMENT_LOCATOR")
+eg: 
+$("#funcEditFrame").contents().find("[id='InvokeUrl-Function-Select-Edit']")
+
+Temp:
+
+$x("//div/div/div/div/div/span[contains(text(),'zczczc')]/span") 
