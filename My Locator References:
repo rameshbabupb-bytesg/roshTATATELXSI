@@ -1,6 +1,6 @@
 Locator References:
 Reference: https://www.w3.org/TR/selectors-3/#universal-selector
-1.xpath:
+1.xpath: 
 
 	text()——> . Can replace text() with dot(.) as it dot is generic and will not search for only text type.
 
